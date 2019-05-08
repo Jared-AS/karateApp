@@ -1,7 +1,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Unirse a un panel</ion-title>
+    <ion-title *ngIf="!isSpectator">Unirse a un panel</ion-title>
+    <ion-title *ngIf="isSpectator">Unirse a un panel como espectador</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click)="alertExit()">
           <ion-icon name="exit"></ion-icon>
@@ -22,7 +23,7 @@
       <!--End logo-->
       <!--Form-->
       <div class="form">
-        <ion-item no-padding transparent>
+        <ion-item no-padding transparent *ngIf="!isSpectator">
           <ion-icon item-left icon-small name="contact"></ion-icon>
           <!---Input field username-->
           <ion-label floating>Nombre de Juez</ion-label>
@@ -38,7 +39,7 @@
         </ion-item>
         <p *ngIf="this.error" class="alert alert-danger" style='color: red' padding>{{this.error}}</p>
         <!---Register button-->
-        <button ion-button float-right button-clear-outline round outline (click)="joinToSession()">Unirse</button>
+        <button ion-button float-right button-clear-outline round outline (click)="executeAction()">Unirse</button>
       </div>
     </ion-col>
   </ion-row>

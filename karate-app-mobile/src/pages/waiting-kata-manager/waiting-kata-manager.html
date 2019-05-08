@@ -33,12 +33,12 @@
 
 
 <ion-content padding>
-  <h3>{{kataName}}</h3> 
-  <h2>{{competitorName}}</h2>  
+  <h3 style="text-align: center; margin: 0;">{{kataName}}</h3> 
+  <h2 style="text-align: center; margin: 0;">{{competitorName}}</h2>  
   <h1 style="text-align: center; color: #0090d0 !important; margin: 0;">{{sessionName}}</h1>
   <img style="top: 120px;" src="assets/images/icon-KataManager/ejecutandoKata.png" >
 </ion-content>
-<ion-fab #fab bottom right>
+<ion-fab #fab bottom right *ngIf="!isSpectator">
     <button button-ion-fab ion-fab  (click)="enableGrade()">
         votar
     </button>

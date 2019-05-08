@@ -28,7 +28,7 @@ export class DisplayGradePage {
   promedioFisico:any;
   promedio:any;
   grade: any;
-
+  isSpectator: boolean;
   subscription: Subscription;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private service: KarateService, 
@@ -44,6 +44,7 @@ export class DisplayGradePage {
     this.service.getByName(this.sessionName).subscribe(data => {
       this.judgeList = data;
     });
+    this.isSpectator = navParams.get('isSpectator');
   }
 
   ionViewDidLoad() {

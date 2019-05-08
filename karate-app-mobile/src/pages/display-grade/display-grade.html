@@ -39,7 +39,7 @@
     <h3>{{promedioFisico}}</h3>
     <br>
 </ion-content>
-<ion-fab #fab bottom right>
+<ion-fab #fab bottom right *ngIf="!isSpectator">
     <button button-ion-fab ion-fab  (click)="restartGrading()">
         <ion-icon name="sync"></ion-icon>
     </button>

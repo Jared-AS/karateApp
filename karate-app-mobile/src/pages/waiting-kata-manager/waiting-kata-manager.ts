@@ -22,12 +22,13 @@ export class WaitingKataManagerPage {
       component: 'DeleteJudgesPage'
     }
   ]
-
+  isSpectator;
   subscription: Subscription;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private karateService: KarateService,
     private alertController: AlertController) {
     this.sessionName = navParams.get('sessionName')
+    this.isSpectator = navParams.get('isSpectator');
   }
 
   ionViewDidLoad() {
@@ -45,6 +46,13 @@ export class WaitingKataManagerPage {
           sessionName: this.sessionName
         });
         this.navCtrl.popToRoot();
+      }
+      if(this.isSpectator && data[0].displayGrade){
+        this.navCtrl.setRoot('DisplayGradePage', {
+          sessionName: this.sessionName,
+          competitorName: this.competitorName,
+          isSpectator: this.isSpectator
+        });
       }
     });
   }

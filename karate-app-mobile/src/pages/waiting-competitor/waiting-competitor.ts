@@ -21,16 +21,24 @@ export class WaitingCompetitorPage {
     }
   ]
   subscription: Subscription;
-
+  isSpectator;
+  spectatorSubscription;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertController: AlertController, 
       private service: KarateService) {
     this.sessionName = navParams.get('sessionName');
+    this.isSpectator = navParams.get('isSpectator');
   }
 
   ionViewDidLoad() {
     this.subscription = this.service.getStatusBySession(this.sessionName).subscribe(data =>{
       this.isCompetitorPresent = data[0].nextCompetitor;
+      if(this.isSpectator && data[0].competing) {
+        this.navCtrl.setRoot('WaitingKataManagerPage', {
+          sessionName: this.sessionName,
+          isSpectator: true
+        })
+      }
     })
   }
 
@@ -39,6 +47,7 @@ export class WaitingCompetitorPage {
   }
 
   goToKata() {
+    this.service.changeCompetitionStatus(this.sessionName, true);
     this.navCtrl.setRoot('WaitingKataManagerPage', {
       sessionName: this.sessionName
     })

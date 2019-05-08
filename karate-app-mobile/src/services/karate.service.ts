@@ -55,7 +55,9 @@ export class KarateService {
         {
           start: false,
           restart: false,
-          nextCompetitor: false
+          nextCompetitor: false,
+          competing: false,
+          displayGrade: false
         }
       ]
     });
@@ -197,6 +199,20 @@ export class KarateService {
       start: false
     });
     
+  }
+
+  changeCompetitionStatus(sessionName, status) {
+    this.firebase.database
+    .ref('/JohnFinalKarate' + '/' + sessionName + '/' + 'states' + '/0' )
+    .update({
+      competing: status
+    });
+  }
+
+  updateState(sessionName, state) {
+    this.firebase.database
+    .ref('/JohnFinalKarate' + '/' + sessionName + '/' + 'states' + '/0' )
+    .update(state);
   }
 
 }

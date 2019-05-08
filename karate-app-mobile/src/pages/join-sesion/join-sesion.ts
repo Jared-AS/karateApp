@@ -16,14 +16,30 @@ export class JoinSesionPage {
   };
   error: string;
   errorName: string;
+  isSpectator;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private karateService: KarateService, 
     private alertController: AlertController) {
- 
+    this.isSpectator = navParams.get('isSpectator');
 }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JoinSesionPage');
+  }
+
+  executeAction() {
+    if (this.isSpectator) {
+      if(this.data.sessionName.length != 0) {
+        this.navCtrl.setRoot('WaitingCompetitorPage', {
+          sessionName: this.data.sessionName,
+          isSpectator: true
+        });
+      } else {
+        this.error = 'El panel es requerido por favor intente de nuevo.';
+      }
+    } else {
+      this.joinToSession();
+    }
   }
 
   joinToSession() {

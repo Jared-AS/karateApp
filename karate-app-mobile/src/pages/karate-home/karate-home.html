@@ -20,7 +20,12 @@
           </ion-row>
           <ion-row class="joint-to-panel">
             <ion-col width-100 style="text-align: center">
-              <button ion-button button-clear-outline round outline block (click)="joinSesion()">Unirse a panel</button>
+              <button ion-button button-clear-outline round outline block (click)="joinSesion(false)">Unirse a panel</button>
+            </ion-col>
+          </ion-row>
+          <ion-row class="joint-to-panel">
+            <ion-col width-100 style="text-align: center">
+              <button ion-button button-clear-outline round outline block (click)="joinSesion(true)">Espectar</button>
             </ion-col>
           </ion-row>
       </ion-col>

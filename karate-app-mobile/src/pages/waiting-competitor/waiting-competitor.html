@@ -36,7 +36,7 @@
   <h1>{{sessionName}}</h1>
   <img src="assets/images/icon-KataManager/ejecutandoKata.png" >
 </ion-content>
-<ion-fab #fab bottom right *ngIf="isCompetitorPresent">
+<ion-fab #fab bottom right *ngIf="isCompetitorPresent && !isSpectator">
     <button button-ion-fab ion-fab  (click)="goToKata()">
         Iniciar
     </button>

@@ -66,6 +66,9 @@ export class JudgeGradeListPage {
   }
 
   goToGradeView() {
+    this.service.updateState(this.sessionName, {
+      displayGrade: true
+    });
     this.navCtrl.setRoot('DisplayGradePage', {
       sessionName: this.sessionName,
       competitorName: this.competitorName
